@@ -1,7 +1,7 @@
-<?php require "../includes/header.php";   ?>
 <?php require "../config/config.php"   ?>
+<?php require "../includes/header.php";   ?>
+
 <?php
-;
 if (isset($_POST['submit'])) {
     if ($_POST['email'] == '' || $_POST['username'] == '' ||
         $_POST['password'] == '') {
@@ -18,6 +18,9 @@ if (isset($_POST['submit'])) {
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
+
+        header("Location: login.php");
+
         echo "User registered successfully.";
     }
 }
