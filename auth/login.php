@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $user = $stmt->fetch();
+        $user = $stmt->FETCH(PDO::FETCH_ASSOC);
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user'] = $user;
